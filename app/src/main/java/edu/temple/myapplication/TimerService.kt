@@ -36,7 +36,7 @@ class TimerService : Service() {
         }
 
         // Stop a currently running timer
-        fun stop() {
+        fun stopTimer() {
             if (::t.isInitialized || isRunning) {
                 t.interrupt()
             }
@@ -109,6 +109,12 @@ class TimerService : Service() {
         super.onDestroy()
 
         Log.d("TimerService status", "Destroyed")
+    }
+
+    fun stopTimer() {
+        if (::t.isInitialized || isRunning) {
+            t.interrupt()
+        }
     }
 
 
